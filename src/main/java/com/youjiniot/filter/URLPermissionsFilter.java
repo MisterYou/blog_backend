@@ -83,6 +83,8 @@ public class URLPermissionsFilter extends PermissionsAuthorizationFilter {
             if (!WebUtils.isAjax(httpRequest)) {
 
                 WebUtils.writeJson(httpResponse, ImmutableMap.of("errcode",302,"errmsg","未登陆"));
+
+
             } else {
                 saveRequestAndRedirectToLogin(request, response);
             }

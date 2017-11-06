@@ -32,10 +32,11 @@ public class WebUtils {
         /*设置字符集为'UTF-8'*/
         response.setCharacterEncoding("UTF-8");
         try {
-            PrintWriter out = response.getWriter();
-            out.println(JSON.toJSONString(obj));
-            out.flush();
-            out.close();
+//            PrintWriter out = response.getWriter();
+//            out.println(JSON.toJSONString(obj));
+//            out.flush();
+//            out.close();
+            response.sendRedirect("/to_login");
         } catch (IOException e) {
             e.printStackTrace();
         }
