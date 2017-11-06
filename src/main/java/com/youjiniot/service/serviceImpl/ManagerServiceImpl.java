@@ -10,6 +10,7 @@ import com.youjiniot.dao.ModuleDAO;
 import com.youjiniot.dao.RoleDAO;
 import com.youjiniot.domain.Manager;
 import com.youjiniot.domain.Module;
+import com.youjiniot.service.ManagerService;
 import com.youjiniot.utils.EncryptUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ import java.util.Set;
  * Created by Y on 2017/11/5.
  */
 @Service
-public class ManagerServiceImpl {
+public class ManagerServiceImpl implements ManagerService{
     @Autowired
     private ManagerDAO managerDAO;
     @Autowired

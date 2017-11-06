@@ -4,6 +4,7 @@ import com.youjiniot.common.Const;
 import com.youjiniot.domain.Manager;
 import com.youjiniot.service.ManagerService;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -19,14 +20,17 @@ public class ManagerRealm extends AuthorizingRealm {
     @Autowired
     private ManagerService managerService;
 
+    public ManagerRealm() {
+        setName("ManagerRealm");
+        // 采用MD5加密
+        setCredentialsMatcher(new HashedCredentialsMatcher("md5"));
+    }
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = (String) principals.getPrimaryPrincipal();
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         //add Permission Resources
         info.setStringPermissions(managerService.findPermissions(username));
-        //add Roles String[Set<String> roles]
-        //info.setRoles(roles);
         return info;
     }
 

@@ -10,6 +10,13 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+    suffix: .html
+    prefix: classpath:/templates/
+    encoding: utf-8
+    content-type: text/html
   datasource:
     name: blog2.0
 #    url: jdbc:mysql://127.0.0.1:3306/shiro?useUnicode=true&characterEncoding=UTF-8
@@ -18,7 +25,7 @@ spring:
     #url: jdbc:mysql://192.168.199.180:3306/dev_njair?useUnicode=true&characterEncoding=UTF-8
     #username: root
     #password: xsscd
-    url: jdbc:mysql://127.0.0.1:3306/blog2.0?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://39.108.158.254:3306/blog2.0?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 940707you
     type: com.alibaba.druid.pool.DruidDataSource
@@ -36,22 +43,27 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
-  freemarker:
-    suffix: .ftl
-    template-loader-path: classpath:/templates/
+  http:
+    multipart:
+      max-file-size: 30Mb
+      max-request-size: 30Mb
+#  freemarker:
+#    suffix: .ftl
+#    template-loader-path: classpath:/templates/
 #LOG
 #logging:
   #config: classpath:log4j2.xml
 mybatis:
-  type-aliases-package: com.train.domain
-  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.youjiniot.domain
+  #mapperLocations: classpath:mybatis/*.xml
   configuration:
-    #ÏÂ»®Ïß×ªÍÕ·å
+    #ä¸‹åˆ’çº¿è½¬é©¼å³°
     mapUnderscoreToCamelCase: true
+  mapper-locations: mybatis/**/*Mapper.xml
 pagehelper:
-    helperDialect: mysql
-    reasonable: true
-    supportMethodsArguments: true
-    pageSizeZero: true
-    params: count=countSql
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  pageSizeZero: true
+  params: count=countSql
 
