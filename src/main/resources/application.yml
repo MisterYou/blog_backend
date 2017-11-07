@@ -25,7 +25,7 @@ spring:
     #url: jdbc:mysql://192.168.199.180:3306/dev_njair?useUnicode=true&characterEncoding=UTF-8
     #username: root
     #password: xsscd
-    url: jdbc:mysql://39.108.158.254:3306/blog2.0?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://39.108.158.254:3306/myblog2.0?useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 940707you
     type: com.alibaba.druid.pool.DruidDataSource

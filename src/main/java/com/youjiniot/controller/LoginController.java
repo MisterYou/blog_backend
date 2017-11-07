@@ -12,6 +12,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -67,10 +68,14 @@ public class LoginController extends BaseController {
     }
 
     @RequestMapping("index")
-    public Object index(){
+    public Object index(Model model){
         Set<String> permissions= managerService.findPermissions(getAccount());
 
-        return "";
+        model.addAttribute("menu",permissions);
+
+        model.addAttribute("name",getUser().getName());
+
+        return "index";
     }
 
 }
