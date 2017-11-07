@@ -2,8 +2,10 @@ package com.youjiniot.controller;
 
 import com.github.pagehelper.Page;
 import com.youjiniot.common.Const;
+import com.youjiniot.domain.Manager;
 import com.youjiniot.utils.Logger;
 import com.youjiniot.utils.PageData;
+import com.youjiniot.utils.ShiroUtils;
 import com.youjiniot.utils.UuidUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -16,6 +18,20 @@ import java.util.Map;
  * Created by train on 17/2/16.
  */
 public class BaseController {
+
+
+    public Manager getUser() {
+        return ShiroUtils.getUser();
+    }
+
+    public int getId() {
+        return getUser().getId();
+    }
+
+    public String getAccount() {
+        return getUser().getAccount();
+    }
+
 
     public Page getPage(HttpServletRequest request){
         int pageNum=1;

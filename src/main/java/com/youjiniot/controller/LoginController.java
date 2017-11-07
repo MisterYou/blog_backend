@@ -66,4 +66,11 @@ public class LoginController extends BaseController {
 
     }
 
+    @RequestMapping("index")
+    public Object index(){
+        Set<String> permissions= managerService.findPermissions(getAccount());
+
+        return "";
+    }
+
 }
