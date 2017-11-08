@@ -8,12 +8,12 @@ public class ShiroUtils {
 	public static Subject getSubjct() {
 		return SecurityUtils.getSubject();
 	}
-	public static Manager getUser() {
-		return (Manager) getSubjct().getPrincipal();
+	public static Object getUser() {
+		return  getSubjct().getPrincipal();
 	}
-	public static int getUserId() {
-		return getUser().getId();
-	}
+	//public static int getUserId() {
+	//	return getUser().getId();
+	//}
 	public static void logout() {
 		getSubjct().logout();
 	}

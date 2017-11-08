@@ -20,16 +20,16 @@ import java.util.Map;
 public class BaseController {
 
 
-    public Manager getUser() {
+    public Object getUser() {
         return ShiroUtils.getUser();
     }
 
-    public int getId() {
-        return getUser().getId();
-    }
+//    public int getId() {
+//        return getUser().getId();
+//    }
 
     public String getAccount() {
-        return getUser().getAccount();
+        return getUser().toString();
     }
 
 

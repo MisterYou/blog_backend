@@ -73,7 +73,7 @@ public class LoginController extends BaseController {
 
         model.addAttribute("menu",permissions);
 
-        model.addAttribute("name",getUser().getName());
+        model.addAttribute("name",getAccount());
 
         return "index";
     }
