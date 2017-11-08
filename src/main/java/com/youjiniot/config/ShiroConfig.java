@@ -57,6 +57,11 @@ public class ShiroConfig {
         chains.put("/unauthor", "anon");
         chains.put("/base/**", "anon");
         chains.put("/css/**", "anon");
+        chains.put("/fonts/", "anon");
+        chains.put("/favicon.ico", "anon");
+        chains.put("/js/**", "anon");
+        chains.put("/img/**", "anon");
+        chains.put("/docs/**", "anon");
         chains.put("/layer/**", "anon");
         chains.put("/**", "perms");
         bean.setFilterChainDefinitionMap(chains);

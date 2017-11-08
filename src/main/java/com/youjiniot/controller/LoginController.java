@@ -62,7 +62,7 @@ public class LoginController extends BaseController {
         } catch (AuthenticationException e) {
             e.printStackTrace();
             //登录失败
-            return ImmutableMap.of("errcode",1,"errmsg","用户名或密码错误");
+            return ImmutableMap.of("code",1,"msg","用户名或密码错误");
         }
 
     }

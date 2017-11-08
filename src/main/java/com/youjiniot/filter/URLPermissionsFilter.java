@@ -42,8 +42,9 @@ public class URLPermissionsFilter extends PermissionsAuthorizationFilter {
         Subject subject = SecurityUtils.getSubject();
 
         //不需要权限验证的情况
-        if(StringUtils.endsWithAny(curUrl, ".js",".css",".html")
+        if(StringUtils.endsWithAny(curUrl, ".js",".css",".html",".css.map",".ico")
                 || StringUtils.endsWithAny(curUrl, ".jpg",".png",".gif", ".jpeg")
+                || StringUtils.endsWithAny(curUrl, ".woff2",".woff",".ttf")
                 || StringUtils.equals(curUrl, "/unauthor")
                 || StringUtils.indexOf(curUrl, "/login")>=0
                 || StringUtils.indexOf(curUrl, "/to_login")>=0

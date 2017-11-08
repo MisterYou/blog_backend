@@ -167,7 +167,24 @@
 					<fork>true</fork>
 				</configuration>
 			</plugin>
+
+
+
+
 		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+				<excludes>
+					<exclude>fonts/**</exclude>
+				</excludes>
+				<includes>
+					<include>**</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 
 
