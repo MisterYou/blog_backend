@@ -78,4 +78,10 @@ public class LoginController extends BaseController {
         return "index";
     }
 
+    @RequestMapping("main")
+    public Object main(){
+        return "main";
+    }
+
+
 }
