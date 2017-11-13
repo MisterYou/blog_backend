@@ -11,11 +11,26 @@ public class Module implements Serializable{
     public static final int FUNCTION_TYPE=2;
 
     private int id;
+    private int parentId;
     private String name;
     private String path;
+    // 授权(多个用逗号分隔，如：user:list,user:create)
+    private String perms;
     private int type;
+    // 排序
+    private Integer orderNum;
+
+    public Integer getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(Integer orderNum) {
+        this.orderNum = orderNum;
+    }
+
     private String moduleKey;
     private Date createdAt;
+    private Date gmtModified;
 
     public int getId() {
         return id;
@@ -65,15 +80,43 @@ public class Module implements Serializable{
         this.createdAt = createdAt;
     }
 
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
+
+    public String getPerms() {
+        return perms;
+    }
+
+    public void setPerms(String perms) {
+        this.perms = perms;
+    }
+
+    public Date getGmtModified() {
+        return gmtModified;
+    }
+
+    public void setGmtModified(Date gmtModified) {
+        this.gmtModified = gmtModified;
+    }
+
     @Override
     public String toString() {
         return "Module{" +
                 "id=" + id +
+                ", parentId=" + parentId +
                 ", name='" + name + '\'' +
                 ", path='" + path + '\'' +
+                ", perms='" + perms + '\'' +
                 ", type=" + type +
+                ", orderNum=" + orderNum +
                 ", moduleKey='" + moduleKey + '\'' +
                 ", createdAt=" + createdAt +
+                ", gmtModified=" + gmtModified +
                 '}';
     }
 }

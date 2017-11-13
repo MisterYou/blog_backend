@@ -18,6 +18,19 @@ public class ModuleSql {
                     SET("name = #{name}");
                 }
 
+                if (StringUtils.isNotBlank(String.valueOf(module.getParentId()))) {
+                    SET("parent_id = #{parentId}");
+                }
+                if (StringUtils.isNotBlank(String.valueOf(module.getOrderNum()))) {
+                    SET("order_num = #{orderNum}");
+                }
+
+                if (StringUtils.isNotBlank(module.getPath())) {
+                    SET("path = #{path}");
+                }
+                if (StringUtils.isNotBlank(module.getPerms())) {
+                    SET("perms = #{perms}");
+                }
                 if (StringUtils.isNotBlank(module.getPath())) {
                     SET("path = #{path}");
                 }
@@ -25,6 +38,7 @@ public class ModuleSql {
                     SET("module_key = #{moduleKey}");
                 }
 
+                SET("gmt_modified = #{gmtModified}");
                 SET("type = #{type}");
                 WHERE("id = #{id}");
             }

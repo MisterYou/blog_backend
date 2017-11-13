@@ -17,7 +17,7 @@ public interface ModuleDAO {
      * @param module
      * @throws Exception
      */
-    @Insert("insert into sys_module(name,path,type,module_key,created_at) values(#{name},#{path},#{type},#{moduleKey},#{createdAt})")
+    @Insert("insert into sys_module(name,parent_id,path,perms,type,order_num,module_key,created_at,gmt_modified) values(#{name},#{parentId},#{path},#{perms},#{type},#{orderNum},#{moduleKey},#{createdAt},#{gmtModified})")
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insert(Module module) throws Exception;
 
@@ -88,4 +88,23 @@ public interface ModuleDAO {
      */
     @Select("select * from sys_module where role_id in(#{roleIds})")
     List<Module> findModuleByRoles(String roleIds);
+
+
+    @Select("select distinct" +
+            "m.id , parent_id, name, path," +
+            "perms,`type`,icon,order_num,created_at, gmt_modified" +
+            "from sys_module m" +
+            "left" +
+            "join sys_role_module rm on m.id = rm.module_id " +
+            "    left join" +
+            "sys_manager_role ur" +
+            "on rm.role_id =ur.role_id where ur.manager_id = #{id}" +
+            "and" +
+            "m.type in(0,1)" +
+            "order by" +
+            "m.order_num")
+    List<Module> listModuleByUserId(int id);
+
+
+
 }

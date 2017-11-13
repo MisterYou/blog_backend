@@ -10,6 +10,7 @@ import com.youjiniot.dao.ModuleDAO;
 import com.youjiniot.dao.RoleDAO;
 import com.youjiniot.domain.Manager;
 import com.youjiniot.domain.Module;
+import com.youjiniot.domain.Tree;
 import com.youjiniot.service.ManagerService;
 import com.youjiniot.utils.EncryptUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -18,10 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.google.common.collect.Lists;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Y on 2017/11/5.
@@ -133,5 +131,17 @@ public class ManagerServiceImpl implements ManagerService{
             }
         }
         return list;
+    }
+
+    @Override
+    public List<Tree<Module>> listMenuTree(int id) {
+        List<Tree<Module>> trees = new ArrayList<Tree<Module>>();
+        List<Module> modules = moduleDAO.listModuleByUserId(id);
+        for(Module sysModule:modules){
+            Tree<Module> tree = new Tree<>();
+
+        }
+
+        return null;
     }
 }

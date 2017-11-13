@@ -3,6 +3,7 @@ package com.youjiniot.service;
 import com.github.pagehelper.Page;
 import com.youjiniot.domain.Manager;
 import com.youjiniot.domain.Module;
+import com.youjiniot.domain.Tree;
 
 import java.util.List;
 import java.util.Set;
@@ -20,5 +21,10 @@ public interface ManagerService {
     public Set<String> findPermissions(String account) ;
     public List<Module> findPermissionsWithArray(String account);
     public List<String> findPermissionUrl(String account);
+
+
+
+    List<Tree<Module>> listMenuTree(int id);
+
 
 }
