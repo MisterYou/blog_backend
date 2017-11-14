@@ -4,6 +4,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.youjiniot.annotation.Before;
 import com.youjiniot.domain.Manager;
+import com.youjiniot.domain.Module;
+import com.youjiniot.domain.Tree;
 import com.youjiniot.service.ManagerService;
 import com.youjiniot.vaildator.ManagerValidator;
 import org.apache.shiro.SecurityUtils;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -69,9 +72,9 @@ public class LoginController extends BaseController {
 
     @RequestMapping("index")
     public Object index(Model model){
-        Set<String> permissions= managerService.findPermissions(getAccount());
-
-        model.addAttribute("menu",permissions);
+       // Set<String> permissions= managerService.findPermissions(getAccount());
+        List<Tree<Module>> menus = managerService.listMenuTree();
+        model.addAttribute("menus",menus);
 
         model.addAttribute("name",getAccount());
 

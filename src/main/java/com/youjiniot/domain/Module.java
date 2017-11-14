@@ -18,6 +18,34 @@ public class Module implements Serializable{
     private String perms;
     private int type;
     // 排序
+
+    @Override
+    public String toString() {
+        return "Module{" +
+                "id=" + id +
+                ", parentId=" + parentId +
+                ", name='" + name + '\'' +
+                ", path='" + path + '\'' +
+                ", perms='" + perms + '\'' +
+                ", type=" + type +
+                ", icon='" + icon + '\'' +
+                ", orderNum=" + orderNum +
+                ", moduleKey='" + moduleKey + '\'' +
+                ", createdAt=" + createdAt +
+                ", gmtModified=" + gmtModified +
+                '}';
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    // 菜单图标
+    private String icon;
     private Integer orderNum;
 
     public Integer getOrderNum() {
@@ -104,19 +132,4 @@ public class Module implements Serializable{
         this.gmtModified = gmtModified;
     }
 
-    @Override
-    public String toString() {
-        return "Module{" +
-                "id=" + id +
-                ", parentId=" + parentId +
-                ", name='" + name + '\'' +
-                ", path='" + path + '\'' +
-                ", perms='" + perms + '\'' +
-                ", type=" + type +
-                ", orderNum=" + orderNum +
-                ", moduleKey='" + moduleKey + '\'' +
-                ", createdAt=" + createdAt +
-                ", gmtModified=" + gmtModified +
-                '}';
-    }
 }

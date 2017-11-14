@@ -12,6 +12,7 @@ import com.youjiniot.domain.Manager;
 import com.youjiniot.domain.Module;
 import com.youjiniot.domain.Tree;
 import com.youjiniot.service.ManagerService;
+import com.youjiniot.utils.BuildTree;
 import com.youjiniot.utils.EncryptUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -139,9 +140,18 @@ public class ManagerServiceImpl implements ManagerService{
         List<Module> modules = moduleDAO.listModuleByUserId(id);
         for(Module sysModule:modules){
             Tree<Module> tree = new Tree<>();
-
+            tree.setId(String.valueOf(sysModule.getId()));
+            tree.setParentId(String.valueOf(sysModule.getParentId()));
+            tree.setText(sysModule.getName());
+            Map<String, Object> attributes = new HashMap<>(16);
+            attributes.put("url",sysModule.getPath());
+            attributes.put("icon",sysModule.getIcon());
+            tree.setAttributes(attributes);
+            trees.add(tree);
         }
+// 默认顶级菜单为０，根据数据库实际情况调整
+        List<Tree<Module>> list = BuildTree.buildList(trees, "0");
 
-        return null;
+        return list;
     }
 }
