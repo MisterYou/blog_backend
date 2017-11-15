@@ -73,7 +73,9 @@ public class LoginController extends BaseController {
     @RequestMapping("index")
     public Object index(Model model){
        // Set<String> permissions= managerService.findPermissions(getAccount());
-        List<Tree<Module>> menus = managerService.listMenuTree();
+        Manager m = managerService.findByAccount(getUser().toString());
+        List<Tree<Module>> menus = managerService.listMenuTree(m.getId());
+
         model.addAttribute("menus",menus);
 
         model.addAttribute("name",getAccount());

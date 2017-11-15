@@ -48,7 +48,7 @@ public interface ManagerDAO {
     @Delete("delete from sys_manager_role where manager_id=#{managerId}")
     int deleteRole(int managerId) throws Exception;
 
-    @Select("select *from sys_manager where account=#{account}")
+    @Select("select * from sys_manager where account=#{account}")
     Manager findByAccount(String account);
 
     @Select("select *,id as managerId from sys_manager where account<>'admin' order by id desc")

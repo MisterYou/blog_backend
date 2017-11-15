@@ -90,19 +90,19 @@ public interface ModuleDAO {
     List<Module> findModuleByRoles(String roleIds);
 
 
-    @Select("select distinct" +
+    @Select("select distinct " +
             "m.id , parent_id, name, path," +
-            "perms,`type`,icon,order_num,created_at, gmt_modified" +
-            "from sys_module m" +
-            "left" +
+            "perms,`type`,icon,order_num,created_at, gmt_modified " +
+            "from sys_module m " +
+            "left " +
             "join sys_role_module rm on m.id = rm.module_id " +
-            "    left join" +
-            "sys_manager_role ur" +
-            "on rm.role_id =ur.role_id where ur.manager_id = #{id}" +
-            "and" +
-            "m.type in(0,1)" +
-            "order by" +
-            "m.order_num")
+            "    left join " +
+            "sys_manager_role ur " +
+            "on rm.role_id =ur.role_id where ur.manager_id = #{id} "  +
+            "and " +
+            "m.type in(0,1) " +
+            "order by " +
+            "m.order_num ")
     List<Module> listModuleByUserId(int id);
 
 
