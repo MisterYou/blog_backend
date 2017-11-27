@@ -41,7 +41,6 @@ public class LoginController extends BaseController {
         return "login";
     }
 
-
     @RequestMapping("/login")
     @ResponseBody
     @Before(ManagerValidator.class)

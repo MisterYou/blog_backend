@@ -45,6 +45,7 @@ public class ManagerServiceImpl implements ManagerService{
         }
 
     }
+    @Override
     @Transactional
     public void update(Manager manager,int roleId) throws Exception {
         if(!StringUtils.isBlank(manager.getPassword())){
@@ -62,6 +63,7 @@ public class ManagerServiceImpl implements ManagerService{
         }
 
     }
+    @Override
     @Transactional
     public void delete(int managerId) throws Exception {
         managerDAO.delete(managerId);
@@ -69,6 +71,7 @@ public class ManagerServiceImpl implements ManagerService{
         managerDAO.deleteRole(managerId);
     }
 
+    @Override
     public Object pagination(Page page){
         PageHelper.startPage(page.getPageNum(),page.getPageSize());
         List<Manager> managers=managerDAO.findAll();
@@ -81,6 +84,7 @@ public class ManagerServiceImpl implements ManagerService{
      * @param account
      * @return
      */
+    @Override
     public Manager findByAccount(String account) {
         return managerDAO.findByAccount(account);
     }
@@ -90,7 +94,8 @@ public class ManagerServiceImpl implements ManagerService{
      * @param account
      * @return
      */
-    public Set<String> findPermissions(String account) {
+    @Override
+    public Set<String>  findPermissions(String account) {
         Set<String> set = Sets.newHashSet();
         Manager user = findByAccount(account);
 
@@ -110,6 +115,7 @@ public class ManagerServiceImpl implements ManagerService{
      * @param account
      * @return
      */
+    @Override
     public List<Module> findPermissionsWithArray(String account) {
         Set<String> set = Sets.newHashSet();
         Manager user = findByAccount(account);
@@ -121,6 +127,7 @@ public class ManagerServiceImpl implements ManagerService{
      * @param account
      * @return
      */
+    @Override
     public List<String> findPermissionUrl(String account) {
         List<String> list = Lists.newArrayList();
         Manager user = findByAccount(account);
