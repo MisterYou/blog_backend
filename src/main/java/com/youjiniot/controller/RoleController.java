@@ -19,8 +19,9 @@ public class RoleController {
     private RoleService roleService;
 
     @RequiresPermissions("sys:role:role")
-    @GetMapping()
+    @RequestMapping("")
     String role() {
+        System.out.println("1111");
         return prefix + "/role";
     }
 
