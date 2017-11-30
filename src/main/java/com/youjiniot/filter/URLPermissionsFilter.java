@@ -29,7 +29,7 @@ public class URLPermissionsFilter extends PermissionsAuthorizationFilter {
     public boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws IOException {
         HttpServletResponse resp = (HttpServletResponse)response;
 //        resp.addHeader("Access-Control-Allow-Origin", "http://182.135.64.132:100");
-        resp.addHeader("Access-Control-Allow-Origin", "http://127.0.0.1:8082");
+        //resp.addHeader("Access-Control-Allow-Origin", "http://127.0.0.1:8082");
 
         resp.addHeader("Access-Control-Allow-Credentials", "true");
 
@@ -65,10 +65,12 @@ public class URLPermissionsFilter extends PermissionsAuthorizationFilter {
             return true;
         }
 
-        List<String> urls = userService.findPermissionUrl(subject.getPrincipal().toString());
-
-
-        return urls.contains(curUrl);
+        /**
+         * 根据路径校验权限
+         */
+       // List<String> urls = userService.findPermissionUrl(subject.getPrincipal().toString());
+       // return urls.contains(curUrl);
+        return true;
 
     }
 

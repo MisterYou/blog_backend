@@ -103,7 +103,7 @@ public class ManagerServiceImpl implements ManagerService{
 
         for(Module module: modules) {
             if(null!=module){
-                set.add(module.getModuleKey());
+                set.add(module.getPerms());
             }
 
         }
