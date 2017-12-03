@@ -4,13 +4,21 @@ package com.youjiniot.dao;
 import com.youjiniot.domain.Role;
 import com.youjiniot.sql.RoleSql;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by train on 2017/2/14.
  */
+@Repository
 public interface RoleDAO {
+
+
+
+    @Select("SELECT * from sys_role")
+    List<Role> list();
+
 
     /**
      * 新增
