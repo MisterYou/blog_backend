@@ -16,7 +16,15 @@ public class Role extends BaseDomain {
     private String name;
     private String description;
     private Date createdAt;
-    private List<Module> modules;
+    private List<Long> moduleIds;
+
+    public List<Long> getModuleIds() {
+        return moduleIds;
+    }
+
+    public void setModuleIds(List<Long> moduleIds) {
+        this.moduleIds = moduleIds;
+    }
 
     public int getId() {
         return id;
@@ -50,14 +58,6 @@ public class Role extends BaseDomain {
         this.createdAt = createdAt;
     }
 
-    public List<Module> getModules() {
-        return modules;
-    }
-
-    public void setModules(List<Module> modules) {
-        this.modules = modules;
-    }
-
     @Override
     public String toString() {
         return "Role{" +
@@ -65,7 +65,7 @@ public class Role extends BaseDomain {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", createdAt=" + createdAt +
-                ", modules=" + modules +
+                ", moduleIds=" + moduleIds +
                 '}';
     }
 }

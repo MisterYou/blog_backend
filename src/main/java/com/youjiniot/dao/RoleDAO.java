@@ -19,6 +19,11 @@ public interface RoleDAO {
     @Select("SELECT * from sys_role")
     List<Role> list();
 
+    @Select("select " +
+            "`id`,`name`,`description`,`created_at` " +
+            "from sys_role where id = #{id}")
+    Role get(Long id);
+
 
     /**
      * 新增
@@ -57,7 +62,7 @@ public interface RoleDAO {
      * @throws Exception
      */
     @Delete("delete from sys_role where id=#{roleId}")
-    int delete(int roleId) throws Exception;
+    int delete(Long roleId) throws Exception;
 
     /**
      * 根据角色删除对应的权限关系

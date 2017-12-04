@@ -4,12 +4,14 @@ package com.youjiniot.dao;
 import com.youjiniot.domain.Module;
 import com.youjiniot.sql.ModuleSql;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * Created by rx on 17/2/13.
  */
+@Repository
 public interface ModuleDAO {
 
     /**

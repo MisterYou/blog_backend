@@ -4,6 +4,7 @@ package com.youjiniot.dao;
 import com.youjiniot.domain.Manager;
 import com.youjiniot.sql.ManagerSql;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * Created by rx on 2017/1/25.
  */
 
+@Repository
 public interface ManagerDAO {
 
     /**
