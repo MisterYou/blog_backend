@@ -47,6 +47,30 @@ public class RoleController {
     }
 
     /**
+     * 保存角色
+     * @param role
+     * @return
+     */
+    @RequiresPermissions("sys:role:add")
+    @PostMapping("/save")
+    @ResponseBody()
+    R save(Role role) {
+//        if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
+//            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+//        }
+        try {
+            if (roleService.save(role) > 0) {
+                return R.ok();
+            } else {
+                return R.error(1, "保存失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return R.error(1, "保存失败");
+        }
+    }
+
+    /**
      * 编辑角色
      * @param id
      * @param model
@@ -88,6 +112,23 @@ public class RoleController {
             return R.error(1, "删除失败");
         }
     }
+
+
+    @RequiresPermissions("sys:role:batchRemove")
+    @RequestMapping("/batchRemove")
+    @ResponseBody
+    R batchRemove(@RequestParam("ids[]") Long[] ids) {
+//        if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
+//            return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+//        }
+        int r = roleService.batchremove(ids);
+        if (r > 0) {
+            return R.ok();
+        }
+        return R.error();
+    }
+
+
 
 
 }

@@ -24,6 +24,9 @@ public interface RoleDAO {
             "from sys_role where id = #{id}")
     Role get(Long id);
 
+    @DeleteProvider(type = RoleSql.class,method = "batchRemove")
+    int batchRemove(Long[] ids);
+
 
     /**
      * 新增

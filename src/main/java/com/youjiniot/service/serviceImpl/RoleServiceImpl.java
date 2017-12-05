@@ -34,6 +34,11 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
+    public int save(Role role) throws Exception {
+        return dao.insert(role);
+    }
+
+    @Override
     public int update(Role role) {
         try {
             int r = dao.update(role);
@@ -69,5 +74,11 @@ public class RoleServiceImpl implements RoleService {
         }
 
         return count;
+    }
+
+    @Override
+    public int batchremove(Long[] ids) {
+
+        return dao.batchRemove(ids);
     }
 }

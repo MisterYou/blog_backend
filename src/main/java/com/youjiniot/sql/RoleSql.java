@@ -42,4 +42,15 @@ public class RoleSql {
         sql.deleteCharAt(sql.length()-1);
         return sql.toString();
     }
+
+    public String batchRemove(Long ids[]) {
+        StringBuilder sql = new StringBuilder("delete from sys_role where role_id in(");
+        sql.append("(");
+        for(Long id:ids){
+            sql.append(id+",");
+        }
+        sql.deleteCharAt(sql.length()-1);
+        sql.append(")");
+        return sql.toString();
+    }
 }
